@@ -1,0 +1,14 @@
+[Unit]
+Description=WebServiceJSON
+After=network.target
+StartLimitIntervalSec=10
+
+[Service]
+Type=api
+Restart=always
+RestartSec=10
+ExecStart=/opt/api/main.bin
+
+[Install]
+WantedBy=multi-user.target
+
