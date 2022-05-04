@@ -1,3 +1,11 @@
+//https://www.geeksforgeeks.org/how-to-use-go-with-mysql/
+
+//https://www.golangprograms.com/example-of-golang-crud-using-mysql-from-scratch.html
+//https://tutorialedge.net/golang/golang-mysql-tutorial/
+//https://zetcode.com/golang/mysql/
+//https://github.com/go-sql-driver/mysql/wiki/Examples
+
+
 package main
 
 import (
