@@ -111,7 +111,8 @@ func wscitas(w http.ResponseWriter, r *http.Request) {
 			tabla.Disponibles, 
 			tabla.Fechas, 
 			tabla.HoraInicio, 
-			tabla.HoraFin 
+			tabla.HoraFin,
+			CONCAT('[',(SELECT GROUP_CONCAT('"',che.hora,'"') FROM citaspasaporte.horas_espera che WHERE che.hora BETWEEN TIME(tabla.HoraInicio) AND TIME(tabla.HoraFin) ORDER BY che.hora ASC),']') AS Horas 
 			FROM (SELECT 
 				IF( ((SELECT limite FROM citaspasaporte.horariosucursal h2 WHERE h2.idSucursal = `+data.ID_Sucursal+` AND h2.idTipoDia=1 LIMIT 1) - (SELECT COUNT(*) FROM citaspasaporte.detallecita d2 WHERE d2.idSucursal=`+data.ID_Sucursal+` AND d2.idFecha=f.idFecha LIMIT 1))<=0, 0, ((SELECT limite FROM citaspasaporte.horariosucursal h2 WHERE h2.idSucursal = `+data.ID_Sucursal+` AND h2.idTipoDia=1 LIMIT 1) - (SELECT COUNT(*) FROM citaspasaporte.detallecita d2 WHERE d2.idSucursal=`+data.ID_Sucursal+` AND d2.idFecha=f.idFecha LIMIT 1))  ) AS Disponibles,
 				f.Fecha AS Fechas,
