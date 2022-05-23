@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"fmt"
 	"database/sql"
-    "log"
-    "encoding/base64"
-    _ "github.com/go-sql-driver/mysql"
+	"log"
+	"encoding/base64"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Respuesta struct {
@@ -19,22 +19,22 @@ type Respuesta struct {
 	TercerNombre			string
 	PrimerApellido			string
 	SegundoApellido			string
-	Genero					string
-	ColorPiel				string
-	ColorOjos				string 
+	Genero				string
+	ColorPiel			string
+	ColorOjos			string 
 	ColorCabello			string
-	Peso					string
-	Estatura				string
+	Peso				string
+	Estatura			string
 	FechaNacimiento			string
-	DUI 					string 
-	Pasaporte 				string
+	DUI 				string 
+	Pasaporte 			string
 	NumeroPartida 			string 
 	FolioPartida 			string
 	TomoPartida 			string
 	TipoLibroPartida 		string 
 	LibroPartida 			string
-	AñoPartida 				string
-	Foto 					string
+	AñoPartida 			string
+	Foto 				string
 }
 
 var conexion = "dgmeconsultaafis:Dgme2019@tcp(10.10.1.160:3306)/afisgs"
