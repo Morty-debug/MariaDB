@@ -11,4 +11,3 @@ ExecStart=/opt/api/main.bin
 
 [Install]
 WantedBy=multi-user.target
-
