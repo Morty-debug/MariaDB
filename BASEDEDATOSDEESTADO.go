@@ -37,7 +37,17 @@ type Respuesta struct {
 	Foto 				string
 }
 
-var conexion = "dgmeconsultaafis:Dgme2019@tcp(10.10.1.160:3306)/afisgs"
+//var conexion = "dgmeconsultaafis:Dgme2019@tcp(10.10.1.160:3306)/afisgs"
+var conexion = "consultapass11:cglFK@tcp(10.10.1.160:3306)/pasaportes"
+
+
+func toUtf8(iso8859_1_buf []byte) string {
+    buf := make([]rune, len(iso8859_1_buf))
+    for i, b := range iso8859_1_buf {
+        buf[i] = rune(b)
+    }
+    return string(buf)
+}
 
 func hasher(s string) []byte {
     val := sha256.Sum256([]byte(s))
@@ -154,8 +164,8 @@ func buscarPersona_xPasaporte(w http.ResponseWriter, r *http.Request) {
             panic(err.Error())
         }
 
-        Estructura := Respuesta{string(values[1]), string(values[2]), string(values[3]), string(values[4]), string(values[5]), string(values[6]), string(values[7]), string(values[8]), string(values[10]), string(values[9]), string(values[12]), string(values[11]), string(values[13]), string(values[15]), string(values[14]), string(values[16]), string(values[17]), string(values[18]), string(values[19]), string(values[20]), string(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
-        
+        Estructura := Respuesta{toUtf8(values[1]), toUtf8(values[2]), toUtf8(values[3]), toUtf8(values[4]), toUtf8(values[5]), toUtf8(values[6]), toUtf8(values[7]), toUtf8(values[8]), toUtf8(values[10]), toUtf8(values[9]), toUtf8(values[12]), toUtf8(values[11]), toUtf8(values[13]), toUtf8(values[15]), toUtf8(values[14]), toUtf8(values[16]), toUtf8(values[17]), toUtf8(values[18]), toUtf8(values[19]), toUtf8(values[20]), toUtf8(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
+        //fmt.Print( toUtf8( values[8] ) )
         js, err := json.Marshal(Estructura)
 		if err != nil {
 			w.Header().Set("Content-Type", "application/json")
@@ -266,7 +276,7 @@ func buscarPersona_xDui(w http.ResponseWriter, r *http.Request) {
             panic(err.Error())
         }
 
-        Estructura := Respuesta{string(values[1]), string(values[2]), string(values[3]), string(values[4]), string(values[5]), string(values[6]), string(values[7]), string(values[8]), string(values[10]), string(values[9]), string(values[12]), string(values[11]), string(values[13]), string(values[15]), string(values[14]), string(values[16]), string(values[17]), string(values[18]), string(values[19]), string(values[20]), string(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
+        Estructura := Respuesta{toUtf8(values[1]), toUtf8(values[2]), toUtf8(values[3]), toUtf8(values[4]), toUtf8(values[5]), toUtf8(values[6]), toUtf8(values[7]), toUtf8(values[8]), toUtf8(values[10]), toUtf8(values[9]), toUtf8(values[12]), toUtf8(values[11]), toUtf8(values[13]), toUtf8(values[15]), toUtf8(values[14]), toUtf8(values[16]), toUtf8(values[17]), toUtf8(values[18]), toUtf8(values[19]), toUtf8(values[20]), toUtf8(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
         
         js, err := json.Marshal(Estructura)
 		if err != nil {
@@ -383,7 +393,7 @@ func buscarPersona_xPartida(w http.ResponseWriter, r *http.Request) {
             panic(err.Error())
         }
 
-        Estructura := Respuesta{string(values[1]), string(values[2]), string(values[3]), string(values[4]), string(values[5]), string(values[6]), string(values[7]), string(values[8]), string(values[10]), string(values[9]), string(values[12]), string(values[11]), string(values[13]), string(values[15]), string(values[14]), string(values[16]), string(values[17]), string(values[18]), string(values[19]), string(values[20]), string(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
+        Estructura := Respuesta{toUtf8(values[1]), toUtf8(values[2]), toUtf8(values[3]), toUtf8(values[4]), toUtf8(values[5]), toUtf8(values[6]), toUtf8(values[7]), toUtf8(values[8]), toUtf8(values[10]), toUtf8(values[9]), toUtf8(values[12]), toUtf8(values[11]), toUtf8(values[13]), toUtf8(values[15]), toUtf8(values[14]), toUtf8(values[16]), toUtf8(values[17]), toUtf8(values[18]), toUtf8(values[19]), toUtf8(values[20]), toUtf8(values[21]), base64.StdEncoding.EncodeToString(values[0]) }
         
         js, err := json.Marshal(Estructura)
 		if err != nil {
