@@ -18,7 +18,7 @@ import (
 )
 
 type Recepcion struct {
-	ID_Sucursal			string
+	ID_Sucursal			string `json:"id_sucursal"`
 }
 
 type Respuesta struct {
