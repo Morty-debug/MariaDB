@@ -64,39 +64,39 @@ func mostrar() {
 	var foto []byte
 	/*establecemos la conexion*/
 	db, err := sql.Open("mysql", conexion)
-    defer db.Close()
-    /*en caso de error detenemos todo*/
-    if err != nil {
-        fmt.Println(err.Error())
-        db.Close()
-        return
-    }
-    /*ejecutamos select*/
-    res, err := db.Query("SELECT usuarios, mensajes, fotos FROM mensajeria")
-    defer res.Close()
-    /*en caso de error detenemos todo*/
-    if err != nil {
-        fmt.Println(err.Error())
-        db.Close()
-        res.Close()
-        return
-    }
-    /*recorremos filas*/
-    for res.Next() {
-    	/*capturamos cada dato de la fila*/
-        err := res.Scan(&usuario, &mensaje, &foto)
-        /*en caso de error detenemos todo*/
-        if err != nil {
-            fmt.Println(err.Error())
-            db.Close()
-            res.Close()
-            return
-        }
-        /*mostramos en terminal*/
-        fmt.Printf("USUARIO=%s MENSAJE=%s FOTO=%s\n\n", usuario, mensaje, base64.StdEncoding.EncodeToString(foto))
-    }
-    /*generamos una pausa*/
-    fmt.Printf("PRECIONE UNA TECLA PARA CONTINUAR...\n")
-    fmt.Scanf("%s")
-    db.Close()
+	defer db.Close()
+	/*en caso de error detenemos todo*/
+	if err != nil {
+		fmt.Println(err.Error())
+		db.Close()
+		return
+	}
+	/*ejecutamos select*/
+	res, err := db.Query("SELECT usuarios, mensajes, fotos FROM mensajeria")
+	defer res.Close()
+	/*en caso de error detenemos todo*/
+	if err != nil {
+		fmt.Println(err.Error())
+		db.Close()
+		res.Close()
+		return
+	}
+	/*recorremos filas*/
+	for res.Next() {
+		/*capturamos cada dato de la fila*/
+		err := res.Scan(&usuario, &mensaje, &foto)
+		/*en caso de error detenemos todo*/
+		if err != nil {
+			fmt.Println(err.Error())
+			db.Close()
+			res.Close()
+			return
+		}
+		/*mostramos en terminal*/
+		fmt.Printf("USUARIO=%s MENSAJE=%s FOTO=%s\n\n", usuario, mensaje, base64.StdEncoding.EncodeToString(foto))
+	}
+	/*generamos una pausa*/
+	fmt.Printf("PRECIONE UNA TECLA PARA CONTINUAR...\n")
+	fmt.Scanf("%s")
+	db.Close()
 }
